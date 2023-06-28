@@ -95,6 +95,25 @@ describe('Request Interceptor Capabilities', () => {
       .that.has.all.keys('code', 'message');
   });
 
+  it('should intercept bad request errors for container data', () => {
+    sandbox
+      .stub(urls, 'authentication')
+      .callsFake(
+        () => 'https://httpstat.us/400?RCType=EmbeddedRCFileProcessor'
+      );
+    return expect(
+      client
+        .save()
+        .then(client => {
+          client.agent.connection.sessions = [];
+          return client.login();
+        })
+        .catch(error => error)
+    )
+      .to.eventually.be.an('object')
+      .that.has.all.keys('code', 'message');
+  });
+
   it('should intercept json responses that do not return a token', () => {
     sandbox
       .stub(urls, 'authentication')
