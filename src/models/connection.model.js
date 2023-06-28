@@ -68,7 +68,7 @@ class Connection extends EmbeddedDocument {
         type: [Session],
         default: () => []
       },
-      /** A string containing the time the token token was issued.
+      /** A string containing the time the token was issued.
        * @member Credentials
        * @type class
        */
@@ -268,7 +268,7 @@ class Connection extends EmbeddedDocument {
    * @method extend
    * @memberof Connection
    * @public
-   * @description Saves a token retrieved from the Data API. This method returns the response recieved to it unmodified.
+   * @description Saves a token retrieved from the Data API. This method returns the response received to it unmodified.
    * @param {String} [header] The header containing the token to clear.
    */
   extend(header) {
@@ -294,7 +294,7 @@ class Connection extends EmbeddedDocument {
    * @method  deactivate
    * @memberOf Connection
    * @public
-   * @description The deactivate method will reactive a session by setting the active property to false.
+   * @description The deactivate method will deactivate a session by setting the active property to false.
    * @param {String} header The header containing the token representing the session to deactivate
    * @param {String} id The request id.
    * @see  {@link Agent#handleResponse}

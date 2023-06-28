@@ -23,7 +23,7 @@ const manifestPath = path.join(__dirname, './env.manifest');
 chai.use(chaiAsPromised);
 
 describe('Session Capabilities', () => {
-  describe('Session Efficency', () => {
+  describe('Session Efficiency', () => {
     let database;
     let client;
     const name = 'testing-client';
@@ -59,7 +59,7 @@ describe('Session Capabilities', () => {
         .catch(error => done(new Error(error.response.data.messages[0].text)));
     });
 
-    it('should reuse sessions when they are avalable', () => {
+    it('should reuse sessions when they are available', () => {
       const wait = 5000;
       const repetition = 5;
       const results = [];

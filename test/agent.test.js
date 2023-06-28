@@ -268,7 +268,7 @@ describe('Agent Configuration Capabilities', () => {
 
   it('should use a proxy if one is set', () => {
     http
-      .createServer(function(req, res) {
+      .createServer(function (req, res) {
         proxy.web(req, res, {
           target: process.env.SERVER
         });

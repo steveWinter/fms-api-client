@@ -3,7 +3,7 @@
 <!--/@-->
 [![Build Status](https://travis-ci.com/Luidog/fms-api-client.png?branch=master)](https://travis-ci.com/Luidog/fms-api-client) [![Known Vulnerabilities](https://snyk.io/test/github/Luidog/fms-api-client/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Luidog/fms-api-client?targetFile=package.json) [![Coverage Status](https://coveralls.io/repos/github/Luidog/fms-api-client/badge.svg?branch=master)](https://coveralls.io/github/Luidog/fms-api-client?branch=master) [![GitHub issues](https://img.shields.io/github/issues/Luidog/fms-api-client.svg?style=plastic)](https://github.com/Luidog/fms-api-client/issues) [![Github commits (since latest release)](https://img.shields.io/github/commits-since/luidog/fms-api-client/latest.svg)](https://img.shields.io/github/issues/Luidog/fms-api-client.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![GitHub license](https://img.shields.io/github/license/Luidog/fms-api-client.svg)](https://github.com/Luidog/fms-api-client/blob/master/LICENSE.md)
 
-A FileMaker Data API client designed to allow easier interaction with a FileMaker database from a web environment. This client abstracts the FileMaker 17 & 18 Data API into class based methods. 
+A FileMaker Data API client designed to allow easier interaction with a FileMaker database from a web environment. This client abstracts the FileMaker 17 & 18 Data API into class based methods.
 
 [fms-api-client documentation](https://luidog.github.io/fms-api-client/)
 
@@ -88,9 +88,9 @@ Each client committed to the datastore will automatically handle Data API Sessio
 
 All client methods accept parameters as defined by FileMaker. The client also allows for an expanded parameter syntax designed to make interacting with the client easier. Scripts and portals can be defined as arrays. Find queries can be defined as either an object or an array. For more information on the syntax supported by the client see [the parameter syntax section](#parameter-syntax).
 
-In addition to the expanded syntax the client will also automatically parse arrays, objects, and numbers to adhere to the requirements of the Data API. The `limit` and `offset` parameters can be either strings or a numbers. The client will also automatically convert `limit`, `find`, and `offset` parameters into their underscored conterparts as needed. Additionally, if a script result is valid JSON it will be automatically parsed for you by the client. 
+In addition to the expanded syntax the client will also automatically parse arrays, objects, and numbers to adhere to the requirements of the Data API. The `limit` and `offset` parameters can be either strings or a numbers. The client will also automatically convert `limit`, `find`, and `offset` parameters into their underscored conterparts as needed. Additionally, if a script result is valid JSON it will be automatically parsed for you by the client.
 
-All methods on the client return promises and each method will reject with a message and code upon encountering an error. All messages and codes follow the FileMaker Data API codes where applicable. 
+All methods on the client return promises and each method will reject with a message and code upon encountering an error. All messages and codes follow the FileMaker Data API codes where applicable.
 
 The client will queue concurrent requests to the Data API. The client can be configured with a [concurrency setting](#client-creation). The client will attempt ensure that each request to the Data API is made with an valid token which is not in use. This behavior prevents request session collisions. For more information on Data API Session handling see the [request queue section](#request-queue).
 
@@ -98,7 +98,7 @@ The client also provides utility modules to aid in working with FileMaker Data A
 
 ### Parameter Syntax
 
-The client supports the same parameter syntax as is found in the [Data API Documentation](https://fm.mutesymphony.com/fmi/data/apidoc/). Where appropriate and useful the client also allows additional parameters. 
+The client supports the same parameter syntax as is found in the [Data API Documentation](https://fm.mutesymphony.com/fmi/data/apidoc/). Where appropriate and useful the client also allows additional parameters.
 
 #### Script Array Syntax
 
@@ -125,10 +125,10 @@ Arrays and objects are stringified before being inserted into field or portal da
 <!--@snippet('./examples/schema/data-schema.json', { showSource: true })-->
 <!--/@-->
 Any property not nested in a `portalData` property will be moved into the `fieldData` property.
- 
+
 #### Sort Syntax
 
-The client accepts the same sort parameters as the Data API. 
+The client accepts the same sort parameters as the Data API.
 <!--@snippet('./examples/schema/sort-schema.json', { showSource: true })-->
 <!--/@-->
 
@@ -140,7 +140,7 @@ When using the `find` method a query is required. The query can either be a sing
 
 ### Datastore Connection
 
-The connect  method must be called before the FileMaker class is used. The connect method is not currently exposed by fms-api-client, but from the marpat dependency. marpat is a fork of camo. Thanks and love to [Scott Robinson](https://github.com/scottwrobinson) for his creation and maintenance of camo.
+The connect method must be called before the FileMaker class is used. The connect method is not currently exposed by fms-api-client, but from the marpat dependency. marpat is a fork of camo. Thanks and love to [Scott Robinson](https://github.com/scottwrobinson) for his creation and maintenance of camo.
 
 marpat is designed to allow the use of multiple datastores with the focus on encrypted file storage and project flexibility.
 
@@ -214,7 +214,7 @@ The logout method is used to end a Data API session. This method will also remov
 
 #### Product Info
 
-A client can get server product info. The productInfo method will return metadata about the FileMaker server the client is configured to use. 
+A client can get server product info. The productInfo method will return metadata about the FileMaker server the client is configured to use.
 
 `client.productInfo()`
 
@@ -476,7 +476,7 @@ Result:
 <!--/@-->
 #### Client Reset
 
-The client reset method will drop all pending and queued requests while also clearing all open sessions. 
+The client reset method will drop all pending and queued requests while also clearing all open sessions.
 
 :warning: This method is experimental. It does not reject pending or queued requests before clearing them. Use with caution.
 
@@ -534,9 +534,9 @@ Transformed:
 <!--/@-->
 #### Transform Utility
 
-The transform utility converts Data API response data by converting `table::field` properties into objects. This utility will traverse the response data converting `{ table::field : value}` properties to `{ table:{ field : value } }`. This utility will also convert `portalData` into arrays of objects. 
+The transform utility converts Data API response data by converting `table::field` properties into objects. This utility will traverse the response data converting `{ table::field : value}` properties to `{ table:{ field : value } }`. This utility will also convert `portalData` into arrays of objects.
 
-The transform utility accepts three option properties. The three option properties are all booleans and true by default. The properties are `convert`,`fieldData`,`portalData`. The `convert` property toggles the transformation of `table::field` properties. The `fieldData` property toggles merging of fieldData to the result. The `portalData` property toggles merging portalData to the result. Setting any property to false  will turn that transformation off. 
+The transform utility accepts three option properties. The three option properties are all booleans and true by default. The properties are `convert`,`fieldData`,`portalData`. The `convert` property toggles the transformation of `table::field` properties. The `fieldData` property toggles merging of fieldData to the result. The `portalData` property toggles merging portalData to the result. Setting any property to false  will turn that transformation off.
 
 `transform(data, parameters)`
 
@@ -557,7 +557,7 @@ Transformed:
 
 The container data utility will retrieve FileMaker container data by following the links returned by the Data API. This utility will accept either a single data object or an array of objects. The utility will use the `field` parameter to target container data urls in the data parameter. This utility also requires a `name` parameter which will be used to target a data property that should be used as the file's name. If a name parameter is provided that is not a property or nested property in the `data` parameter, the name parameter itself will be used. The `destination` parameter should be either 'buffer' to indicate that an object with a file's name and buffer should be returned or the path, relative to the current working directory, where the utility should write container data to a file. This utility will also accept optional request `parameters` to modify the http request.
 
-`containerData(data, field, destination, name, parameters)` 
+`containerData(data, field, destination, name, parameters)`
 
 {{#functions name="containerData"}}
 {{>parameters}}
@@ -570,9 +570,9 @@ Result:
 
 #### Databases Utility
 
-The databases utility will get the accessible databases for the server and credentials passed to it. 
+The databases utility will get the accessible databases for the server and credentials passed to it.
 
-`databases(server, credentials, version, parameters)` 
+`databases(server, credentials, version, parameters)`
 
 {{#functions name="databases" memberof="Metadata Service"}}
 {{>parameters}}
@@ -587,7 +587,7 @@ Result:
 
 The productInfo utility will get Data API information for the server passed to it.
 
-`productInfo(host, version, parameters)` 
+`productInfo(host, version, parameters)`
 
 {{#functions name="productInfo" memberof="Metadata Service"}}
 {{>parameters}}
@@ -619,7 +619,7 @@ A client can have a custom [Agent](https://nodejs.org/api/http.html#http_class_h
 
 #### Custom Request Parameters
 
-All client methods except `client.login()` and `client.logout()` accept request parameters. These parameters are `request.proxy` and `request.timeout`, `request.agent`. These properties will apply only to the current request. 
+All client methods except `client.login()` and `client.logout()` accept request parameters. These parameters are `request.proxy` and `request.timeout`, `request.agent`. These properties will apply only to the current request.
 
 #### Proxies
 
