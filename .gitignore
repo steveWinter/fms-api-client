@@ -25,7 +25,7 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 # dotenv environment variables file
-.env 
+.env
 # make your own distributions
 dist/
 bundles/
@@ -37,3 +37,4 @@ data/
 .nyc_output
 assets/*
 !assets/placeholder.md
+.idea
